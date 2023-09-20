@@ -33,3 +33,5 @@ Then logs:
 ```
 
 If you want to disable log colors, you can set the env `NO_COLOR` to `true`.
+
+> PS: publish by `cargo publish --registry crates-io`.
