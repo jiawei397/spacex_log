@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2021"
 authors = ["jiawei397 <jw397@126.com>"]
 license = "MIT"
+description = "log formater with env_logger"
 repository = "https://github.com/jiawei397/spacex_log"
 keywords = ["spacex", "log"]
 readme = "README.md"
