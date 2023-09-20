@@ -1,55 +1,32 @@
-# spacex_sdk
+# spacex_log
 
 ## Example
 
-run as `cargo run --example simple`
-
-auto generate:
+Run as `cargo run --example simple`.
 
 ```rust
-use jwfetch::{FetchError, Method};
-use log::info;
-use serde::{Deserialize, Serialize};
-use spacex_sdk::{get_auto_open_api, GetAccessTokenOptions, GetOpenAPIOptions};
+use log::{debug, error, info, warn};
+use spacex_log::init_log;
 
-#[derive(Deserialize, Debug, Serialize, Clone)]
-pub struct UserInfo {
-    username: String,
-    email: String,
-}
+fn main() {
+    init_log(Some("info"));
 
-pub async fn get_user_info() -> Result<UserInfo, FetchError> {
-    let params = GetAccessTokenOptions {
-        client_id: "xx".to_string(),
-        client_secret: "xx".to_string(),
-        scope: "wecom".to_string(),
-        user_agent: "xxx".to_string(),
-        auth_api: "https://open.xx.com/sso/v2".to_string(),
-    };
-    let openid = "xx".to_string();
-    let url = format!("account/get_userinfo_by_openid?openid={}", openid);
-    let open_params = GetOpenAPIOptions {
-        client_id: params.client_id.clone(),
-        user_agent: params.user_agent.clone(),
-        url,
-        method: Method::GET,
-        authorization_type: "Basic".to_string(),
-        body: None,
-        auth_api: params.auth_api.clone(),
-        timeout: None,
-    };
-    get_auto_open_api::<UserInfo>(params, open_params).await
-}
+    debug!("debug info");
 
-#[tokio::main]
-async fn main() {
-    match get_user_info().await {
-        Ok(user) => {
-            info!("userinfo: {:?}", user);
-        }
-        Err(e) => {
-            println!("error: {}", e);
-        }
-    }
+    info!("test info");
+
+    warn!("warn info");
+
+    error!("error");
 }
 ```
+
+Then logs:
+
+```bash
+2023-09-20 15:23:17 [INFO] [simple]: test info
+2023-09-20 15:23:17 [WARN] [simple]: warn info
+2023-09-20 15:23:17 [ERROR] [simple]: error
+```
+
+If you want to disable log colors, you can set the env `NO_COLOR` to `true`.

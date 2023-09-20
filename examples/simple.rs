@@ -1,7 +1,10 @@
-use log::{error, info, warn};
+use log::{debug, error, info, warn};
+use spacex_log::init_log;
 
 fn main() {
-    env_logger::init_from_env(env_logger::Env::new().default_filter_or("debug"));
+    init_log(Some("info"));
+
+    debug!("debug info");
 
     info!("test info");
 
