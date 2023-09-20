@@ -1,5 +1,7 @@
 # spacex_log
 
+One log formatter with env_logger.
+
 ## Example
 
 Run as `cargo run --example simple`.
@@ -9,7 +11,8 @@ use log::{debug, error, info, warn};
 use spacex_log::init_log;
 
 fn main() {
-    init_log(Some("info"));
+    init_log("INFO");
+    // init_log("info");
 
     debug!("debug info");
 
