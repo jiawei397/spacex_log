@@ -2,6 +2,12 @@
 name = "spacex_log"
 version = "0.1.0"
 edition = "2021"
+authors = ["jiawei397 <jw397@126.com>"]
+license = "MIT"
+repository = "https://github.com/jiawei397/spacex_log"
+keywords = ["spacex", "log"]
+readme = "README.md"
+documentation = "https://docs.rs/spacex_log"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
